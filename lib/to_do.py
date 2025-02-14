@@ -4,10 +4,10 @@ class Todo:
     #   complete: a boolean representing whether the task is complete
 
     def __init__(self, task):
-        if task == '':
-            raise Exception('task cannot be empty')
-        elif not isinstance(task, str):
-            raise Exception('task must be type string')
+        if not isinstance(task, str):
+            raise TypeError('task must be type string')
+        elif task.strip() == '':
+            raise ValueError('task cannot be empty')
         else:
             self.task = task
             self.complete = False

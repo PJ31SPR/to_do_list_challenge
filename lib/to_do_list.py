@@ -1,31 +1,26 @@
 class TodoList:
     def __init__(self):
-        pass
+        self.task_list = []
+        
+
+    def get_todos(self):
+        return self.task_list
+        
 
     def add(self, todo):
-        # Parameters:
-        #   todo: an instance of Todo
-        # Returns:
-        #   Nothing
-        # Side-effects:
-        #   Adds the todo to the list of todos
-        pass
+        if todo in self.task_list:
+            raise ValueError('todo already exists in list')
+        else:
+            self.task_list.append(todo)
 
     def incomplete(self):
-        # Returns:
-        #   A list of Todo instances representing the todos that are not complete
-        pass
+        return [todo for todo in self.task_list if not todo.complete]
 
     def complete(self):
-        # Returns:
-        #   A list of Todo instances representing the todos that are complete
-        pass
+        return [todo for todo in self.task_list if todo.complete]
 
     def give_up(self):
-        # Returns:
-        #   Nothing
-        # Side-effects:
-        #   Marks all todos as complete
-        pass
+        for todo in self.task_list:
+            todo.complete = True
 
 

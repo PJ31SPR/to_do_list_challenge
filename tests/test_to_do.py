@@ -49,16 +49,16 @@ test todo raises err if passed empty str as task
 """
 
 def test_todo_raises_err_if_passed_empty_str():
-    with pytest.raises(Exception) as err:
+    with pytest.raises(ValueError) as err:
         to_do = Todo('')
     err_msg = str(err.value)
-    err_msg = 'task cannot be empty'
+    assert err_msg == 'task cannot be empty'
 
 """
 test todo raises err if input task not a str
 """
 def test_todo_raises_error_for_non_string_task():
-    with pytest.raises(Exception) as err:
+    with pytest.raises(TypeError) as err:
         to_do = Todo(7)
     err_msg = str(err.value)
-    err_msg = 'task must be type string'
+    assert err_msg == 'task must be type string'
